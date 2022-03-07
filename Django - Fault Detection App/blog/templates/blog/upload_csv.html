@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<head>
+    <style>
+        .upload-btn{
+            width: 400px;
+            margin-top: 5rem;
+            margin-left: 10rem;
+        }
+    </style>
+</head>
+   <body>
+    <div>
+        <form method="POST" enctype="multipart/form-data" class="content-section" style="margin-top: 5rem;">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h1 class="section-header">Detect Faults</h1>
+                <p>By uploading a dataset in this form, the dataset will be processed and you will be redirected to a results page that contains all of the detected failures.</p><hr>
+            </fieldset>
+            <input type="file" id="file1" name="file" style="margin-left: 17rem;" multiple > 
+            <div class="form-group">
+                <button class="btn btn-outline-info loading-icon fa fa-spinner hide btns upload-btn" type="submit">
+                    <!-- <i class="loading-icon fa fa-spinner fa-spin hide"></i> -->
+                    <span>Submit</span>
+                </button>
+            </div>
+        </form>
+    </div>
+   </body>
+{% endblock content %}
