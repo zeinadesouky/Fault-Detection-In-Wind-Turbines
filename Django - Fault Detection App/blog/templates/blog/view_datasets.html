@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <title>View Dataset</title>
+        <style>
+            .tb{
+                margin-top: 5rem;
+                align-items: center;
+                margin-left: -17rem;
+                width: 1273px;
+                background-color: white;
+                overflow: scroll;
+                height: 250px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="section-header">Uploaded Datasets</h1><hr>
+            {% for dataframe in dataframes %}
+            <div class="tb">
+                {{ dataframe|safe }}
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<head>
+
+  <style>
+    .upload-btn{
+        width: 400px;
+        margin-top: 5rem;
+        margin-left: 9rem;
+    }
+  </style>
+  <title>Upload Dataset</title>
+</head>
+<body>
+    
+    <div class="msg">
+        {{message}}
+    </div>
+
+    <div class="container">
+      <form method="POST" enctype="multipart/form-data" class="content-section" style="margin-top: 5rem;">
+      {% csrf_token %}
+
+      <fieldset class="form-group">
+        <h1 class="section-header">Upload Dataset</h1>
+        <p>By uploading a dataset in this form, the dataset will be saved so it can be viewed later.</p><hr>
+      </fieldset>
+
+      <input type="file" id="file2" name="file2" style="margin-left: 17rem;" multiple > 
+
+      <div class="form-group">
+        <button class="btn btn-outline-info loading-icon fa fa-spinner hide btns upload-btn" type="submit">
+            <!-- <i class="loading-icon fa fa-spinner fa-spin hide"></i> -->
+            <span>Submit</span>
+        </button>
+    </div>
+  </form>
+</div>
+</body>
+{% endblock content %}
