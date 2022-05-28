@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container">
+    <legend class="section-header">FAQ</legend><hr>
+    <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                How to add a dataset?
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              Only admins are allowed to add datasets, and that is by clicking the "Add Datasets" tab on the navigation bar
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                How to submit a response if any help is needed?
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                In case of any guidance or assistance needed, the contact us form is available for users and admins. It can also be found in the navigation bar under the name "Contact Us"
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                How to update profile?
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                To access your  profile, you can find the "Profile" tab in the navigation bar, this tab will navigate you to your profile, allowing you to view your information and update it if needed.
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock content %}
