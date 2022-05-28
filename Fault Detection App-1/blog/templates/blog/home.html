@@ -1,0 +1,76 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load leaflet_tags %}
+{% block content %}
+<head>
+  {% leaflet_js %}
+  {% leaflet_css %}
+  <script>
+   function initMap() {
+      const uluru = { lat: 0.0018211100000000001, lng: 0.009671981000000001 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: uluru,
+      });
+      const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+        title: "Turbine 7",
+      });
+    }
+
+  </script>
+  <script>
+    var wtIcon = L.icon({
+    iconUrl: 'https://static.thenounproject.com/png/811338-200.png',
+  
+
+    iconSize:     [60, 80], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+window.addEventListener("map:init", function (e) {
+        var detail = e.detail;
+        var windTurbine7 = L.marker([0.0018211100000000001, 0.009671981000000001], {icon: wtIcon}).addTo(detail.map);
+
+}
+)
+  </script>
+  <style>
+    .about-us{
+      margin-top: 22rem;
+      text-align: center;
+    }
+  </style>
+</head>
+  <div class="img-container">
+    <div class="inner-container">
+      <h1 style="color: white; font: 'Oswald', sans-serif; margin-top: 7rem;">DISCOVER SOONER, FIX FASTER</h1>
+      <h4 style="color: white; font: 'Oswald', sans-serif;">Aiming to solve wind turbine maintenance problems</h4>
+    </div>
+  </div><br><br><br>
+
+  <body>
+    <div class="about-us">
+      <h1 class="section-header">About Us</h1><hr>
+      <div>
+        <p>
+          Institutions have been rapidly redirecting their investments away from fossil fuels, creating
+          a favorable scenario for the generation of clean energy. The wind industry, especially, has seen
+          an exponential increase in recent years. Early fault detection creates an alternative for operation
+          and maintenance (O&M), helping forgo costs before they reach a catastrophic stage since
+          preventive methods are used to stop malfunctions before their occurrence, improving turbine
+          reliability and allowing for maximum utilization and better control of the wind farms. Here in
+          Wind Turbines Solutions, our main goal is to help engineerings reach the optimal results by providing resources
+          of early fault detections and power prediction.
+        </p>
+      </div><hr>
+    </div>
+
+    <div id="map"></div>
+
+    {% leaflet_map "yourmap" callback="window.map_init_basic" %}
+  </body>
+{% endblock content %}
