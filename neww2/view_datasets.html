@@ -1,0 +1,96 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static '/blog/assets/css/main.css' %}">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <style>
+            table{
+                margin-left: 5em;
+            }
+
+            button {
+                text-decoration: none;
+                color: inherit;
+                border: none;
+                background-color: transparent;
+                margin-top: 5rem;
+                text-align:center; 
+                position:relative;
+            }
+            .view{
+                margin-top: -1rem;
+                text-align: center;
+                /* font-family: 'Bebas Neue', cursive;
+                font-size: 30px; */
+            }
+
+            hr{
+                border-color: black;
+                background-color: black;
+                margin-top: -2rem;
+            }
+
+        </style>
+        
+    </head>
+    <body style="background-image: url('/blog/static/blog/assets/images/viewbg1.png'); left: 0; bottom: 0;"> 
+        <div class="container">
+            <!-- <div class="view">
+                <img src="\blog\static\blog\assets\images\view1.PNG" alt="#"/> 
+            </div> -->
+            <h1 class="section-header" style="margin: 3rem;">SCADA Datasets</h1> <hr>
+            
+            <div class="my-card" style="margin-right: -20em; margin-top: -5em;">
+                <div class="card-content">
+                    <div class="img-place">
+                            <div id="card-img"></div>
+                    </div>
+                    <div class="card-text">
+                    <h5>Click on the dataset to view the whole dataset</h5>
+                    </div>
+                </div>
+                </div>
+
+            <form action="{% url 'single-dataset' %}" method="POST">
+                {% csrf_token %}
+                <div style="margin-top: -20em;">
+                    <table>
+                        <tr>
+                            {% for file in files %}
+                                <tr>
+                                    <td>
+                                        <div class="main-container">
+                                            <div class="card card-1">
+                                                <!-- <div class="card__icon"><i class="fas fa-bolt"></i></div>
+                                                <p class="card__exit"><i class="fas fa-times"></i></p> -->
+                                                <button class="cta" type="submit" name="file" value={{file}} style="margin-top: 4rem;">
+                                                    <span style="font-family: 'Baloo Chettan 2', cursive; font-size: 30px;">{{file}}</span>
+                                                    <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                                    <path d="M1,5 L11,5"></path>
+                                                    <polyline points="8 1 12 5 8 9"></polyline>
+                                                    </svg>
+                                                </button>
+                                                <!-- <p class="card__apply">
+                                                    <a class="card__link" href="#">Apply Now <i class="fas fa-arrow-right"></i></a>
+                                                </p> -->
+                                                </div>
+                                        </div>
+                                        
+                                        <br>
+                                        <br>
+                                        <br>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+{% endblock content %}
