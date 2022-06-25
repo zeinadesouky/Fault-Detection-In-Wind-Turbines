@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="{% static '\blog\assets\css\main.css' %}">
 <style>
 
 div.relative 
@@ -30,7 +31,7 @@ div#one {
 }
 
 div#two {
-  background: green;
+  background: #388087;
   left:50px
   
 }
@@ -150,12 +151,40 @@ body {font-family: Verdana, sans-serif;}
   .weekdays li, .days li {width: 12.2%;}
 
 }
+
+
+
+
+
 </style>
 
 </head>
 
 <body>
-    
+  <fieldset class="form-group">
+    <h1 class="section-header">Calendar</h1><hr>
+  </fieldset>
+
+  <div class="card shadow1">
+    <h2>Warnings Color Scheme</h2>
+    <p>Hover to find out!</p>
+    <br><br>
+    <div class = "mybtn center">
+      <button class = " daybutton"> Danger </button>
+      <button class = " weekbutton">1 Week</button>
+      <button class = "twoweekbutton">2 Weeks</button>
+      <button class = "threeweekbutton">3 Weeks</button>
+      <button class = "fourweekbutton">4 Weeks</button>
+      <button class = "safebutton">Safe</button>
+   </div>
+  </div>
+
+
+  
+  
+  
+  
+
 <div id="two">
 
  
@@ -167,7 +196,7 @@ body {font-family: Verdana, sans-serif;}
 
     <form action="{% url 'set-day-view' %}" method="POST">
         {% csrf_token %}
-      <div class="month" style="background:#355e38;">      
+      <div class="month" style="background:#6fb3b8;">      
         <ul>
          
           <li>
@@ -247,7 +276,7 @@ body {font-family: Verdana, sans-serif;}
 
 <h1>CSS Calendar</h1>
 
-<div class="month" style="background:#228c22;">      
+<div class="month" style="background:#6fb3b8;">      
   <ul>
     <li class="prev">&#10094;</li>
     <li class="next">&#10095;</li>
@@ -310,7 +339,7 @@ body {font-family: Verdana, sans-serif;}
 
 <h1>CSS Calendar</h1>
 
-<div class="month" style="background:#355e38;">      
+<div class="month" style="background:#6fb3b8;">      
   <ul>
     <li class="prev">&#10094;</li>
     <li class="next">&#10095;</li>
@@ -374,7 +403,7 @@ body {font-family: Verdana, sans-serif;}
 
 <form action="{% url 'set-day-view' %}" method="POST">
   {% csrf_token %}
-<div class="month" style="background:#355e38;">      
+<div class="month" style="background:#6fb3b8;">      
   <ul>
    
     <li>November<br>
@@ -454,7 +483,7 @@ body {font-family: Verdana, sans-serif;}
 
 <h1>CSS Calendar</h1>
 
-<div class="month">      
+<div class="month" style="background:#6fb3b8;">      
   <ul>
     <li class="prev">&#10094;</li>
     <li class="next">&#10095;</li>
@@ -534,7 +563,7 @@ body {font-family: Verdana, sans-serif;}
 
 <form action="{% url 'set-day-view' %}" method="POST">
     {% csrf_token %}
-  <div class="month" style="background:#355e38;">      
+  <div class="month" style="background:#6fb3b8;">      
     <ul>
      
       <li>
@@ -617,7 +646,7 @@ body {font-family: Verdana, sans-serif;}
 
   <form action="{% url 'set-day-view' %}" method="POST">
       {% csrf_token %}
-    <div class="month" style="background:#355e38;">      
+    <div class="month" style="background:#6fb3b8;">      
       <ul>
        
         <li>

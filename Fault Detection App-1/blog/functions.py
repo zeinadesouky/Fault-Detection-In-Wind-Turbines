@@ -2,7 +2,7 @@ import pandas as pd
 
 def posts():
         
-    path5 = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/allllll.csv"
+    path5 = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/allllll.csv"
   
     monthly_resampled_data = pd.read_csv(path5)
 
@@ -11,16 +11,16 @@ def posts():
  
     posts4=[]
 
-    path11 = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/month1.csv"
+    path11 = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/month1.csv"
     month1 = pd.read_csv(path11)
 
-    path22 = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/month2.csv"
+    path22 = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/month2.csv"
     month22 = pd.read_csv(path22)
 
-    path33 = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/month3.csv"
+    path33 = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/month3.csv"
     month33 = pd.read_csv(path33)
 
-    path44 = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/month4.csv"
+    path44 = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/month4.csv"
     month4 = pd.read_csv(path44)
     
 
@@ -49,7 +49,7 @@ def dictionary():
 
     import calendar
     dataframes_list_html = []
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/allllll.csv"
+    path = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/allllll.csv"
     
     print(path)
     print("wellllll3")

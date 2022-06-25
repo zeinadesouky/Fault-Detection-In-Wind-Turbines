@@ -97,7 +97,7 @@ def openDataset(request):
             message='The uploaded file has to be CSV.  Please try again.'
             messages.add_message(request, messages.INFO, 'Dataset Should be .CSV file!')
         else:
-            save_path = 'C:/Users/user/Desktop/Fault Detection App/LSTM_Uploaded_Datasets/'
+            save_path = '/Users/macbookpro/Desktop/FaultDetectionApp-1/Uploaded_Datasets/'
             file_name = csv_file.name
             fs = FileSystemStorage(location=save_path)
             file = fs.save(file_name, csv_file)
@@ -124,7 +124,7 @@ def openDataset2(request):
             messages.add_message(request, messages.INFO, 'Dataset Should be .CSV file!')
             # return render(request, 'blog/upload_csv.html',{'message':message})
         else:
-            save_path = '/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/Uploaded_Datasets_SCADA'
+            save_path = '/Users/macbookpro/Desktop/FaultDetectionApp-1/blog/Uploaded_Datasets_SCADA'
             file_name = csv_file.name
             fs = FileSystemStorage(location=save_path)
             file = fs.save(file_name, csv_file)
@@ -139,7 +139,7 @@ def openDataset2(request):
 
 # @jit
 def read_datasets(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/Uploaded_Datasets/"
+    path = r"/Users/macbookpro/Desktop/FaultDetectionApp-1/Uploaded_Datasets/"
     
     path1, dirs, files = next(os.walk(path))
     file_count = len(files)
@@ -176,7 +176,7 @@ def read_datasets(request):
     return render(request,'blog/view_datasets.html',{'files': file_names})
 
 def read_datasets2(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/STL_Uploaded_Datasets/"
+    path = r"/Users/macbookpro/Desktop/FaultDetectionApp-1/STL_Uploaded_Datasets/"
     
     path1, dirs, files = next(os.walk(path))
     file_count = len(files)
@@ -207,7 +207,7 @@ temp_df=[]
 temp_df2=[]
 
 def one_dataset(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/Uploaded_Datasets/"
+    path = r"/Users/macbookpro/Desktop/FaultDetectionApp-1/Uploaded_Datasets/"
 
     path1, dirs, files = next(os.walk(path))
 
@@ -231,7 +231,7 @@ def one_dataset(request):
 
 #read specific WEATHER dataset
 def one_dataset2(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/STL_Uploaded_Datasets/"
+    path = r"/Users/macbookproDesktop/FaultDetectionApp-1/STL_Uploaded_Datasets/"
     
 
     path1, dirs, files = next(os.walk(path))
@@ -302,7 +302,7 @@ def dataGenBeatTime(request):
     print("wnydudidid")
 
     colorss={}
-    path3 = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/allllll.csv"
+    path3 = r"/Users/macbookpro/Desktop/FaultDetectionApp-1/blog/datasetss/allllll.csv"
     print(path3)
     temp_df5 = pd.read_csv(path3)
 
@@ -379,7 +379,7 @@ def set_day(request):
     return render(request, 'blog/chosen_day.html', {'datasingle':x})
 
 def mapDeets(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/datasetss/allllll.csv"
+    path = r"/Users/macbookpro/Desktop/Fault-Detection-In-Wind-Turbines/FaultDetectionApp-1/blog/datasetss/allllll.csv"
     m = pd.read_csv(path)
     
     key=request.POST.get('cal')

@@ -11,8 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@700&family=Lato:wght@900&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@700&family=Bebas+Neue&family=Lato:wght@900&family=Oswald:wght@300&family=Source+Sans+Pro:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static '\blog\assets\css\main.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '\blog\assets\css\card.css' %}">
 
     <!-- jquery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -35,7 +38,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Datasets
+              Upload Dataset
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'upload_csv' %}">Upload SCADA Dataset</a>
@@ -52,14 +55,6 @@
               <a class="dropdown-item" href="{% url 'view_datasets2' %}">View Weather Dataset</a>
             </div>
           </li>
-<!-- 
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'wt_components_results' %}">Detect Faults <span class="sr-only">(current)</span></a>
-          </li> -->
-
-          <!-- <li class="nav-item active">
-            <a class="nav-link" href="{% url 'wt_components_results' %}">Detect Faults <span class="sr-only">(current)</span></a>
-          </li> -->
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Account
