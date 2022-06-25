@@ -1,0 +1,269 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link src="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/css/uikit.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <title>Results</title>
+    <style>
+
+
+        /* .list-seperator{
+            border: 1px solid rgb(228, 227, 227);
+            border-radius: 3px;
+        } */
+        @import url("https://fonts.googleapis.com/css?family=Niramit:300,300i,700");
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+        font-family: "K2D", sans-serif;
+        /* background: #f6f6f2; */
+        letter-spacing: 1px;
+        }
+
+        .container {
+        max-width: 1300px;
+        max-height: 1000px;
+        margin: 50px auto;
+        }
+
+        p {
+        font-weight: 300;
+        line-height: 1.5;
+        font-size: 18px;
+        opacity: 0.8;
+        }
+
+        .timeline {
+        position: relative;
+        padding-left: 4rem;
+        margin: 0 0 0 30px;
+        color: white;
+        }
+        .timeline:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background: #388087;
+        }
+        .timeline .timeline-container {
+        position: relative;
+        margin-bottom: 2.5rem;
+        }
+        .timeline .timeline-container .timeline-icon {
+        position: absolute;
+        left: -88px;
+        top: 4px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 2rem;
+        background: #4f537b;
+        }
+        .timeline .timeline-container .timeline-icon i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        }
+        .timeline .timeline-container .timeline-icon img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        }
+        .timeline .timeline-container .timeline-body {
+        background: #388087;
+        border-radius: 3px;
+        padding: 20px 20px 15px;
+        box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
+        }
+        .timeline .timeline-container .timeline-body:before {
+        content: "";
+        background: inherit;
+        width: 20px;
+        height: 20px;
+        display: block;
+        position: absolute;
+        left: -10px;
+        transform: rotate(45deg);
+        border-radius: 0 0 0 2px;
+        }
+        .timeline .timeline-container .timeline-body .timeline-title {
+        margin-bottom: 1.4rem;
+        }
+        .timeline .timeline-container .timeline-body .timeline-title .badge {
+        background: #ffc31d;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: bold;
+        }
+        .timeline .timeline-container .timeline-body .timeline-subtitle {
+        font-weight: 300;
+        font-style: italic;
+        opacity: 0.4;
+        margin-top: 16px;
+        font-size: 14px;
+        }
+    
+        .timeline .timeline-container.info .badge,
+        .timeline .timeline-container.info .timeline-icon {
+        background: #11cdef !important;
+        }
+        
+        .timeline .timeline-container.warning .badge,
+        .timeline .timeline-container.warning .timeline-icon {
+        background: #ff8d72 !important;
+        }
+        .list{
+            text-align: center;
+            list-style:none;
+            margin:auto;
+            padding:0;
+            
+            
+        }
+        .item{
+            /* background-color:rgb(249, 249, 249); */
+            /* margin:.25em; */
+            padding:.5em;
+            display:inline-table;
+            color:white
+    
+        }
+        #n {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            /* width: 100%; */
+            text-align: center;
+            
+            
+            }
+
+        #n td, #n th {
+        border: 3px solid rgb(208, 208, 208);
+        padding: 8px;
+        }
+
+        /* #n tr:nth-child(even){background-color: #f2f2f2;} */
+        #n tr {background-color: #b6d3be; }
+
+        #n tr:hover {
+            background-color: #f2f2f2;
+            color:black
+        }
+
+        #n th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: hsl(0, 3%, 23%);
+        color: white;
+        }
+
+    
+
+
+    </style>
+</head>
+<body>
+   
+   
+    <!-- <p> -->
+
+            <h1 class="section-header">Weather Warnings Found</h1><hr>
+            <div class="container">
+                
+                
+                <div class="timeline">
+                   {% if output|length < 1 %}
+                   <div class="timeline-container info">
+                    <div class="timeline-icon">
+                        <i class="far fa-grin"></i>
+                    </div>
+                    <div class="timeline-body">
+                        <h4 class="timeline-title"><span class="badge">Safe</span></h4>
+                        <p>   
+                            No upcoming fault are happening soon.
+                            <ul class="list">
+                                {% for i in output %}
+                                 {% if i != None %}
+                                    <li class="item">
+                                    {{i|safe}}
+                                    </li>
+                                 {% endif %}
+                                {% endfor %}
+                            </ul>
+                            </p>
+                        <p class="timeline-subtitle">.</p>
+                    </div>
+                </div>
+
+                    {% else %}
+                    <div class="timeline-container warning">
+                        <div class="timeline-icon">
+                            <i class="far fa-grimace"></i>
+                        </div>
+                        <div class="timeline-body">
+                            <h4 class="timeline-title"><span class="badge">Warning</span></h4>
+                            <p>
+                                Warning! The system detected too many anomalies which may lead to unusual behavior in the future.
+                                <div id="n">
+                                <ul class="list">
+                                    {% for i in output %}
+                                     {% if i != None%}
+                                        <li class="item">
+                                        {{i|safe}}
+                                        </li>
+                                     {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            
+                            </p>
+                            <p class="timeline-subtitle">. </p>
+                        </div>
+                    </div>
+                   {% endif %}
+                </div>
+                <!-- <div class="my-card" style="margin-right: -20em; margin-top: -5em;">
+                    <div class="card-content">
+                      <div class="img-place">
+                               <div id="card-img"></div>
+                      </div>
+                      <div class="card-text">
+                        <p class="timeline-subtitle">Weather Conditions can have a negative effect on wind farms. 
+                            If you see the 'danger' badge, keep a close eye on the wind turbines as it may cause unusual behaviour.
+                        </p>
+                      </div>
+                    </div>
+                 </div> -->
+            </div>
+
+
+         
+    
+    
+            
+        
+       
+
+<!-- 
+
+</p> -->
+</body>
+</html>
+{% endblock content %}

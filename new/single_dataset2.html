@@ -1,0 +1,63 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{% static '\blog\assets\css\main.css' %}">
+            
+            <title>View Dataset</title>
+            <style>
+                /* .tb{
+                    margin-top: 5rem;
+                    align-items: center;
+                    margin-left: -17rem;
+                    width: 1200px;
+                    background-color: white;
+                    overflow: scroll;
+                    height: 450px;
+                    border: 12px black ;
+                    border-radius: 2px;
+                } */
+                button{
+                    background-color: #4CAF50; /* Green */
+                    border: none;
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 8px;
+                    width: 400px;
+                    margin-left: 9em;
+                    font-size: 15px;
+                }
+                button:hover{
+                    background-color: white;
+                    color: black;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1 class="section-header">Chosen Dataset</h1><hr>
+                <div id="customers">
+                    {% for data in dataframes %}
+                        {{ data|safe }}
+                    {% endfor %}
+                    <hr>
+                </div>
+                <br>
+                <form method="POST" action="{% url 'weather_results' %}">
+                    {% csrf_token %}
+                    <button class="upload-btn" type="submit" name="stl">Show Weather Warnings</button>
+                </form>
+            </div>
+        </body>
+    </html>
+
+{% endblock content %}
