@@ -1,0 +1,818 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static '\blog\assets\css\main.css' %}">
+<style>
+
+div.relative 
+{
+ 
+  width: 300px;
+  height: 300px;
+  
+  background: blue;
+  white-space: nowrap;
+  float: right;
+}
+
+div#one, div#two {
+  display: inline-block;
+  width: 800px;
+  height: 50px;
+}
+
+div#one {
+  background: red;
+  right: 0px;
+}
+
+div#two {
+  background: #388087;
+  left:50px
+  
+}
+                
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+.month {
+  padding: 40px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  font-size: 13px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  width: 100%;
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+.days li .active {
+  padding: 5px;
+  
+  background: #1abc9c;
+  color: white 
+}
+
+.days li .active2 {
+  padding: 5px;
+  color: white 
+}
+
+.button {
+ list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+  padding: 10px 32px;
+}
+.btn-link {
+    width: 13.6%;
+    border: none;
+    outline: none;
+    background: 15px;
+    cursor: pointer;
+    color: #777;
+    padding: 10px 10px;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 5px;
+}
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 12.5%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 12.2%;}
+
+}
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+  <fieldset class="form-group">
+    <h1 class="section-header">Calendar</h1><hr>
+  </fieldset>
+
+  <div class="card shadow1">
+    <h2>Warnings Color Scheme</h2>
+    <p>Hover to find out!</p>
+    <br><br>
+    <div class = "mybtn center">
+      <button class = " daybutton"> Danger </button>
+      <button class = " weekbutton">1 Week</button>
+      <button class = "twoweekbutton">2 Weeks</button>
+      <button class = "threeweekbutton">3 Weeks</button>
+      <button class = "fourweekbutton">4 Weeks</button>
+      <button class = "safebutton">Safe</button>
+   </div>
+  </div>
+
+
+  
+  
+  
+  
+
+<div id="two">
+
+ 
+
+{% for value in day2 %} 
+
+
+    {% if value.dayname == 'Saturday' %}
+
+    <form action="{% url 'set-day-view' %}" method="POST">
+        {% csrf_token %}
+      <div class="month" style="background:#6fb3b8;">      
+        <ul>
+         
+          <li>
+            October<br>
+            <span style="font-size:18px;">2016</span>
+          </li>
+        </ul>
+      </div>
+      
+      <ul class="weekdays">
+        <li>Sa</li>
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        
+      </ul>
+      
+      <ul class="days">  
+       
+        {% for i in colors %}
+        
+        {% if i.dayName == 'Saturday' %}
+        
+      
+        {% if i.color == 'FFFDE7' %}
+      
+        <li style="background:#fffff9;"> <button  type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+      
+        {% elif i.color == 'FFF9C4'   %}
+        <li style="background:#ffffdc;"> <button type="submit" class="btn btn-link"> {{i.day}}</button></li>
+      
+        {% elif i.color == 'FFF59D'   %}
+        <li style="background:#fffabf;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+      
+        {% elif i.color == 'FFF176'   %}
+        <li style="background:#ffdba4;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}><span class="active2">{{ i.day}}</span></button></li>
+      
+        {% elif i.color == 'FFEE58'   %}
+        <li style="background:#ffbd89;"> <button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{i.day}}</button></li>
+      
+        {% elif i.color == 'FFEB3B'   %}
+        <li style="background:#ff9e6e;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+      
+        {% elif i.color == 'FDD835'   %}
+        <li style="background:#ff8054;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+      
+        {% elif i.color == 'FBC02D'   %}
+        <li style="background:#ff603b;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+      
+        {% elif i.color == 'F9A825'   %}
+        <li style="background:#ff3e20"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+      
+        {% elif i.color == 'F57F17'   %}
+        <li style="background:#ff0000;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+      
+        {% else %}
+      
+        <li>{{i.day}}</li>
+      
+      
+      </form>
+      
+        {% endif %}
+      
+        {% endif %}
+      
+       
+        {% endfor %}
+      </ul>
+      
+  
+{% elif value == 'Sunday'   %}
+
+
+<h1>CSS Calendar</h1>
+
+<div class="month" style="background:#6fb3b8;">      
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>
+      October<br>
+      <span style="font-size:18px">2016</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Sa</li>
+  <li>Su</li>
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  
+</ul>
+
+<ul class="days">  
+  <li></li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <span style="background:blue;"><li>8</li></span>
+  <a href="twitter.com"><li>9</li></a>
+  <a href="facebook.com"><li><span class="active">10</span></li></a>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+  <li>31</li>
+</ul>
+
+
+{% elif value.dayname == 'Monday'   %}
+
+
+<h1>CSS Calendar</h1>
+
+<div class="month" style="background:#6fb3b8;">      
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>
+      November<br>
+      <span style="font-size:18px">2016</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Sa</li>
+  <li>Su</li>
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  
+</ul>
+
+<ul class="days">  
+  <li></li>
+  <li></li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <span style="background:blue;"><li>8</li></span>
+  <a href="twitter.com"><li>9</li></a>
+  <a href="facebook.com"><li><span class="active">10</span></li></a>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+  <li>31</li>
+</ul>
+
+
+
+{% elif value.dayname == 'Tuesday'   %}
+
+<form action="{% url 'set-day-view' %}" method="POST">
+  {% csrf_token %}
+<div class="month" style="background:#6fb3b8;">      
+  <ul>
+   
+    <li>November<br>
+      <span style="font-size:18px;">2016</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Sa</li>
+  <li>Su</li>
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  
+</ul>
+
+<ul class="days">  
+  <li ></li>
+  <li ></li>
+  <li ></li>
+  {% for i in colors %}
+  
+  {% if i.dayName == 'Tuesday' %}
+  
+
+  {% if i.color == 'FFFDE7' %}
+
+  <li style="background:#fffff9;"> <button  type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+
+  {% elif i.color == 'FFF9C4'   %}
+  <li style="background:#ffffdc;"> <button type="submit" class="btn btn-link"> {{i.day}}</button></li>
+
+  {% elif i.color == 'FFF59D'   %}
+  <li style="background:#fffabf;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+
+  {% elif i.color == 'FFF176'   %}
+  <li style="background:#ffdba4;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}><span class="active2">{{ i.day}}</span></button></li>
+
+  {% elif i.color == 'FFEE58'   %}
+  <li style="background:#ffbd89;"> <button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{i.day}}</button></li>
+
+  {% elif i.color == 'FFEB3B'   %}
+  <li style="background:#ff9e6e;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+
+  {% elif i.color == 'FDD835'   %}
+  <li style="background:#ff8054;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+
+  {% elif i.color == 'FBC02D'   %}
+  <li style="background:#ff603b;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+
+  {% elif i.color == 'F9A825'   %}
+  <li style="background:#ff3e20"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+
+  {% elif i.color == 'F57F17'   %}
+  <li style="background:#ff0000;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+
+  {% else %}
+
+  <li>{{i.day}}</li>
+
+
+</form>
+
+  {% endif %}
+
+  {% endif %}
+
+ 
+  {% endfor %}
+</ul>
+
+{% elif value == 'Wednesday'   %}
+
+
+<h1>CSS Calendar</h1>
+
+<div class="month" style="background:#6fb3b8;">      
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>
+      September<br>
+      <span style="font-size:18px">2016</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Sa</li>
+  <li>Su</li>
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  
+</ul>
+
+<ul class="days">  
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  {% for i in colors %}
+  
+  {% if i.dayName == 'Wednesday' %}
+  
+  
+  {% if i.color == 'FFFDE7' %}
+  <li style="background:#fffff9;"> {{i.day}}</li>
+
+  {% elif i.color == 'FFF9C4'   %}
+  <li style="background:#ffffdc;"> {{i.day}}</li>
+
+  {% elif i.color == 'FFF59D'   %}
+  <li style="background:#fffabf;"> {{i.day}}</li>
+
+  {% elif i.color == 'FFF176'   %}
+  <li style="background:#ffdba4;"><span class="active2">{{ i.day}}</span></li>
+
+  {% elif i.color == 'FFEE58'   %}
+  <li style="background:#ffbd89;"> {{i.day}}</li>
+
+  {% elif i.color == 'FFEB3B'   %}
+  <li style="background:#ff9e6e;">{{ i.day }}</li>
+
+  {% elif i.color == 'FDD835'   %}
+  <li style="background:#ff8054;">{{ i.day }}</li>
+
+  {% elif i.color == 'FBC02D'   %}
+  <li style="background:#ff603b;">{{ i.day }}</li>
+
+  {% elif i.color == 'F9A825'   %}
+  <li style="background:#ff3e20"> {{i.day}}</li>
+
+  {% elif i.color == 'F57F17'   %}
+  <li style="background:#ff0000;"> {{i.day}}</li>
+
+  {% else %}
+
+  <li>{{i.day}}</li>
+
+
+
+  {% endif %}
+
+  {% endif %}
+
+ 
+  {% endfor %}
+
+</ul>
+{% elif value.dayname == 'Thursday'  and  value.month == 9 %}
+
+<form action="{% url 'set-day-view' %}" method="POST">
+    {% csrf_token %}
+  <div class="month" style="background:#6fb3b8;">      
+    <ul>
+     
+      <li>
+        September<br>
+        <span style="font-size:18px;">2016</span>
+      </li>
+    </ul>
+  </div>
+  
+  <ul class="weekdays">
+    <li>Sa</li>
+    <li>Su</li>
+    <li>Mo</li>
+    <li>Tu</li>
+    <li>We</li>
+    <li>Th</li>
+    <li>Fr</li>
+    
+  </ul>
+  
+  <ul class="days">  
+    <li ></li>
+    <li ></li>
+    <li ></li>
+    <li ></li>
+    <li ></li>
+    {% for i in colors %}
+    
+    
+    {% if value.dayname == i.dayName and i.month == 9  %}
+    
+   
+  
+    {% if i.color == 'FFFDE7' %}
+  
+    <li style="background:#fffff9;"> <button  type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+  
+    {% elif i.color == 'FFF9C4'   %}
+    <li style="background:#ffffdc;"> <button type="button" class="btn btn-link"> {{i.day}}</button></li>
+  
+    {% elif i.color == 'FFF59D'   %}
+    <li style="background:#fffabf;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+  
+    {% elif i.color == 'FFF176'   %}
+    <li style="background:#ffdba4;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}><span class="active2">{{ i.day}}</span></button></li>
+  
+    {% elif i.color == 'FFEE58'   %}
+    <li style="background:#ffbd89;"> <button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{i.day}}</button></li>
+  
+    {% elif i.color == 'FFEB3B'   %}
+    <li style="background:#ff9e6e;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+  
+    {% elif i.color == 'FDD835'   %}
+    <li style="background:#ff8054;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+  
+    {% elif i.color == 'FBC02D'   %}
+    <li style="background:#ff603b;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+  
+    {% elif i.color == 'F9A825'   %}
+    <li style="background:#ff3e20"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+  
+    {% elif i.color == 'F57F17'   %}
+    <li style="background:#ff0000;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+  
+    {% else %}
+  
+    <li>{{i.day}}</li>
+  
+  
+  </form>
+  {% endif %}
+    {% endif %}
+  
+  
+   
+    {% endfor %}
+  </ul>
+
+  {% elif value.dayname == 'Thursday' and  value.month == 12 %}
+
+  <form action="{% url 'set-day-view' %}" method="POST">
+      {% csrf_token %}
+    <div class="month" style="background:#6fb3b8;">      
+      <ul>
+       
+        <li>
+          December<br>
+          <span style="font-size:18px;">2016</span>
+        </li>
+      </ul>
+    </div>
+    
+    <ul class="weekdays">
+      <li>Sa</li>
+      <li>Su</li>
+      <li>Mo</li>
+      <li>Tu</li>
+      <li>We</li>
+      <li>Th</li>
+      <li>Fr</li>
+      
+    </ul>
+    
+    <ul class="days">  
+      <li ></li>
+      <li ></li>
+      <li ></li>
+      <li ></li>
+      <li ></li>
+      {% for i in colors %}
+      
+      
+      {% if value.dayname == i.dayName and i.month == 12  %}
+      
+    
+      {% if i.color == 'FFFDE7' %}
+    
+      <li style="background:#fffff9;"> <button  type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}} </button></li>
+    
+      {% elif i.color == 'FFF9C4'   %}
+      <li style="background:#ffffdc;"> <button type="button" class="btn btn-link"> {{i.day}}</button></li>
+    
+      {% elif i.color == 'FFF59D'   %}
+      <li style="background:#fffabf;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+    
+      {% elif i.color == 'FFF176'   %}
+      <li style="background:#ffdba4;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}><span class="active2">{{ i.day}}</span></button></li>
+    
+      {% elif i.color == 'FFEE58'   %}
+      <li style="background:#ffbd89;"> <button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{i.day}}</button></li>
+    
+      {% elif i.color == 'FFEB3B'   %}
+      <li style="background:#ff9e6e;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+    
+      {% elif i.color == 'FDD835'   %}
+      <li style="background:#ff8054;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+    
+      {% elif i.color == 'FBC02D'   %}
+      <li style="background:#ff603b;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}>{{ i.day }}</button></li>
+    
+      {% elif i.color == 'F9A825'   %}
+      <li style="background:#ff3e20"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+    
+      {% elif i.color == 'F57F17'   %}
+      <li style="background:#ff0000;"><button type="submit" class="btn btn-link" name="cal"  value={{i.key}}> {{i.day}}</button></li>
+    
+      {% else %}
+    
+      <li>{{i.day}}</li>
+    
+    
+    </form>
+     
+      {% endif %}
+      {% endif %}
+     
+    
+     
+      {% endfor %}
+    </ul>
+  
+{% elif value == 'Friday'   %}
+
+
+<h1>CSS Calendar</h1>
+
+<div class="month">      
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>
+      August<br>
+      <span style="font-size:18px">2016</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Sa</li>
+  <li>Su</li>
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  
+</ul>
+
+<ul class="days">  
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <span style="background:blue;"><li>8</li></span>
+  <a href="twitter.com"><li>9</li></a>
+  <a href="facebook.com"><li><span class="active">10</span></li></a>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+
+  <li>31</li>
+</ul>
+
+
+
+</body>
+
+
+
+
+
+
+
+{%else%}
+    notttt  
+{% endif %}
+{% endfor %}
+
+
+</div>
+</div>
+              
+  
+
+{% endblock content %}
+       
