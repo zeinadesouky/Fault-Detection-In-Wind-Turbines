@@ -97,7 +97,7 @@ def openDataset(request):
             message='The uploaded file has to be CSV.  Please try again.'
             messages.add_message(request, messages.INFO, 'Dataset Should be .CSV file!')
         else:
-            save_path = 'C:/Users/user/Desktop/Fault Detection App/LSTM_Uploaded_Datasets/'
+            save_path = '/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/Uploaded_Datasets_SCADA'
             file_name = csv_file.name
             fs = FileSystemStorage(location=save_path)
             file = fs.save(file_name, csv_file)
@@ -124,14 +124,14 @@ def openDataset2(request):
             messages.add_message(request, messages.INFO, 'Dataset Should be .CSV file!')
             # return render(request, 'blog/upload_csv.html',{'message':message})
         else:
-            save_path = '/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/Uploaded_Datasets_SCADA'
+            save_path = '/Users/nourelgarhy/Downloads/Fault Detection App-1/STL_Uploaded_Datasets/'
             file_name = csv_file.name
             fs = FileSystemStorage(location=save_path)
             file = fs.save(file_name, csv_file)
             messages.add_message(request, messages.INFO, 'Dataset Uploaded Successfully!')
 
     else:
-        message='no file is uploaded'
+        # message='no file is uploaded'
         messages.add_message(request, messages.INFO, 'No File is Uploaded!')
         # return render(request, 'blog/upload_csv.html',{'message':message})       
     return render(request,'blog/upload_csv_ag.html',{'message': message})
@@ -139,7 +139,7 @@ def openDataset2(request):
 
 # @jit
 def read_datasets(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/Uploaded_Datasets/"
+    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/Uploaded_Datasets_SCADA/"
     
     path1, dirs, files = next(os.walk(path))
     file_count = len(files)
@@ -207,7 +207,7 @@ temp_df=[]
 temp_df2=[]
 
 def one_dataset(request):
-    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/Uploaded_Datasets/"
+    path = r"/Users/nourelgarhy/Downloads/Fault Detection App-1/blog/Uploaded_Datasets_SCADA/"
 
     path1, dirs, files = next(os.walk(path))
 
