@@ -1,0 +1,302 @@
+.flip-card {
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  .flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  body {
+    background: #fafafa;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  .card {
+    padding: 20px;
+    background: #fff;
+    max-width: 800px;
+    border-radius: 20px;
+    margin: 60px auto;
+    border: 5px solid white;
+    text-align: center;
+  }
+  
+  .highlight {
+    font-weight: bold;
+    color: #294;
+  }
+  
+  .shadow1 { 
+    box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+  }
+  
+  .shadow2 { 
+    box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
+  }
+
+  .daybutton {
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+ }
+
+ .daybutton:hover {
+    background-color:#ff0000;
+    transition: 0.7s;
+}
+
+.weekbutton {
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+ }
+ .weekbutton:hover {
+    background-color:#ff8054;
+    transition: 0.7s;
+}
+.twoweekbutton {
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+ }
+ .twoweekbutton:hover {
+    background-color:#ffbd89;
+    transition: 0.7s;
+}
+.threeweekbutton {
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+ }
+ .threeweekbutton:hover {
+    background-color:#fffabf;
+    transition: 0.7s;
+}
+.fourweekbutton {
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+ }
+ .fourweekbutton:hover {
+    background-color:#ffffdc;
+    transition: 0.7s;
+}
+.safebutton {
+    text-align: center;
+    font-size: 12px;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember",sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+ }
+ .safebutton:hover {
+    background-color:#fffff9;
+    transition: 0.7s;
+}
+ .mybtn {
+    background-color: white;
+ }
+ .center {
+    border: 5px solid white;
+    text-align: center;
+    }
+
+/* .buttons {
+    width: 200px;
+    margin: 0 auto;
+    display: inline;}
+    
+        .action_btn {
+    width: 200px;
+    margin: 0 auto;
+    display: inline;} */
+
+    div.btn-group > button[data-rating='1']:hover,
+div.btn-group > button[data-rating='1']:focus, 
+div.btn-group > button[data-rating='1']:active, 
+div.btn-group > button[data-rating='1'].active {
+  background-color: #265a88;
+  background-image: linear-gradient(to bottom, #fff 0, #265a88 100%);
+}
+div.btn-group > button[data-rating='2']:hover,
+div.btn-group > button[data-rating='2']:focus, 
+div.btn-group > button[data-rating='2']:active, 
+div.btn-group > button[data-rating='2'].active {
+  background-color: #419641;
+  background-image: linear-gradient(to bottom, #fff 0, #419641 100%);
+}
+div.btn-group > button[data-rating='3']:hover,
+div.btn-group > button[data-rating='3']:focus, 
+div.btn-group > button[data-rating='3']:active, 
+div.btn-group > button[data-rating='3']:hover:active {
+  background-color: #2aabd2;
+  background-image: linear-gradient(to bottom, #fff 0, #2aabd2 100%);
+}
+div.btn-group > button[data-rating='4']:hover,
+div.btn-group > button[data-rating='4']:focus,
+div.btn-group > button[data-rating='4']:active,
+div.btn-group > button[data-rating='4']:hover:active {
+  background-color: #eb9316;
+  background-image: linear-gradient(to bottom, #fff 0, #eb9316 100%);
+}
+div.btn-group > button[data-rating='5']:hover,
+div.btn-group > button[data-rating='5']:focus,
+div.btn-group > button[data-rating='5']:active,
+div.btn-group > button[data-rating='5']:hover:active {
+  background-color: #c12e2a;
+  background-image: linear-gradient(to bottom, #fff 0, #c12e2a 100%);
+}
