@@ -1,0 +1,168 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+<html>
+    <body>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{% static '/blog/assets/css/main.css' %}">
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+            <style>
+                table{
+                    margin-left: 5em;
+                }
+
+                button {
+                    text-decoration: none;
+                    color: inherit;
+                    border: none;
+                    background-color: #e1f0db;
+                    }
+                .cta {
+                    position: relative;
+                    margin: auto;
+                    padding: 19px 22px;
+                    transition: all 0.2s ease;
+                    }
+                    .cta:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    border-radius: 28px;
+                    background: rgba(255, 171, 157, 0.5);
+                    width: 56px;
+                    height: 56px;
+                    transition: all 0.3s ease;
+                    }
+                    .cta span {
+                    position: relative;
+                    font-size: 16px;
+                    line-height: 18px;
+                    font-weight: 900;
+                    letter-spacing: 0.25em;
+                    text-transform: uppercase;
+                    vertical-align: middle;
+                    }
+                    .cta svg {
+                    position: relative;
+                    top: 0;
+                    margin-left: 10px;
+                    fill: none;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke: #111;
+                    stroke-width: 2;
+                    transform: translateX(-5px);
+                    transition: all 0.3s ease;
+                    }
+                    .cta:hover:before {
+                    width: 100%;
+                    background: #ffab9d;
+                    }
+                    .cta:hover svg {
+                    transform: translateX(0);
+                    }
+                    .cta:active {
+                    transform: scale(0.96);
+                    }
+
+                .my-card {
+                    width: 270px;
+                    height: auto;
+                    box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+                    position: relative;
+                    border-radius: 20px;
+                    margin: auto;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    }
+
+                    .img-place {
+                    overflow: hidden;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    }
+
+                    #card-img {
+                    width: 100%;
+                    height: 280px;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    background-image: url('/blog/static/blog/assets/images/file_card.png');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    transition: 0.5s;
+                    }
+
+                    #card-img:hover {
+                    width: 300px;
+                    }
+
+                    .card-2-space {
+                    padding: 0 40px 20px 40px;
+                    }
+
+                    .card-text {
+                    padding: 5%;
+                    border-bottom-left-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                    background-color:  lightgray;
+                    color: black;
+                    font-size: 20px;
+                    }
+
+                    .card-btn {
+                    width: 100%;
+                    margin-top: 10px;
+                    }
+                
+            </style>
+        </head>
+
+        <div class="container">
+            <h1 class="section-header" style="margin-top: 2em;">Uploaded Datasets</h1>
+            <hr style="background-color: black;">
+            
+            <div class="my-card" style="margin-right: -20em; margin-top: 1em;">
+                <div class="card-content">
+                  <div class="img-place">
+                           <div id="card-img"></div>
+                  </div>
+                  <div class="card-text">
+                    <h5>Click on the dataset to view the whole dataset</h5>
+                  </div>
+                </div>
+             </div>
+            <form action="{% url 'single-dataset' %}" method="POST">
+                {% csrf_token %}
+                <div style="margin-top: -28em;">
+                    <table>
+                        <tr>
+                            {% for file in files %}
+                                <tr>
+                                    <td>
+                                        <button class="cta" type="submit" name="file" value={{file}}>
+                                            <span>{{file}}</span>
+                                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                            <path d="M1,5 L11,5"></path>
+                                            <polyline points="8 1 12 5 8 9"></polyline>
+                                            </svg>
+                                        </button>
+                                        <br>
+                                        <br>
+                                        <br>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+
+    </body>
+</html>
+{% endblock content %}
